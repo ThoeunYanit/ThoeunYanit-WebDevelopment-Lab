@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    
+</head>
+
+<style>
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #136db2; 
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-card {
+      background-color: #ffffff;   
+      padding: 32px;
+      width: 450px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      height: 40px;
+      padding: 6px 10px;
+      margin: 5px 0 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 20px 0;
+      background-color: rgb(14, 223, 98);
+      border: none;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .helper {
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: gray;
+      margin-top: 2px;
+    }
+
+    
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .logo {
+        display: block;
+        margin: 0 auto; 
+        width: 100px;   
+        height: auto; 
+        margin-bottom: 10px;  
+    }
+
+
+    a {
+        color: #136db2;      
+        text-decoration: none; 
+     
+    }
+
+
+</style>
+
+
+<body>
+    <div class="page">
+        <div class="form-card">
+
+    
+        <form method="get">
+            
+            <img src="download__2_-removebg-preview.png" atl="cat" class="logo">
+            <h2>Sign in to Facecat</h2>
+
+            <label for="UsernameOrEmail">Username or email address</label>
+            <input type="text" id="UsernameOrEmail" name="user-email" required>
+
+            <label for="Password">Password</label>
+            <input type="password" id="Password" name="password" required>
+
+            <input type="submit" value="Sign in" class="btn">
+
+            <p style="text-align:center">New to Facecat?<a href="http://127.0.0.1:5500/ThoeunYanit-WebDevelopment-Lab/Week2/sign_up.html"> Create an account</a></p>
+        </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>GreenIsh</title>
+  <link rel="stylesheet" href="global.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Logo + Text -->
+      <a href="#" class="flex items-center gap-2">
+        <img src="logo.png" alt="Logo" class="w-10 h-10">
+        <div class="text-2xl font-bold text-green-600">GreenIsh</div>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex gap-8 text-gray-600">
+        <a href="#" class="hover:text-green-600">Home</a>
+        <a href="#" class="hover:text-green-600">Service</a>
+        <a href="#" class="hover:text-green-600">Feature</a>
+        <a href="#" class="hover:text-green-600">Product</a>
+        <a href="#" class="hover:text-green-600">Testimonial</a>
+        <a href="#" class="hover:text-green-600">FAQ</a>
+      </nav>
+
+      <!-- Buttons -->
+      <div class="flex gap-4 items-center">
+        <a href="#" class="text-gray-600 hover:text-green-600">Login</a>
+        <a href="#" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+          Sign up
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h1 class="text-5xl font-bold leading-tight">
+          Lessons and insights <br>
+          <span class="text-green-600">from 8 years</span>
+        </h1>
+        <p class="mt-4 text-gray-600">
+          Where to grow your business as a photographer: site or social media?
+        </p>
+        <button class="mt-6 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded">
+          Register
+        </button>
+      </div>
+
+      <div>
+        <img src="image/hero.jpg" alt="Hero" class="w-full rounded">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLIENTS ================= -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-xl font-semibold">Our Clients</h2>
+      <p class="text-gray-500 mt-2">
+        We have been working with some Fortune 500+ clients
+      </p>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-10 items-center opacity-70">
+        <img src="image/amazon.jpg" alt="Client 1" class="h-8 object-contain">
+        <img src="image/meta.jpg" alt="Client 2" class="h-16 object-contain">
+        <img src="image/nvidia.jpg" alt="Client 3" class="h-16 object-contain">
+        <img src="image/microsoft.jpg" alt="Client 4" class="h-16 object-contain">
+    </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold">
+        Manage your entire community <br> in a single system
+      </h2>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded shadow">
+          <h3 class="font-semibold text-xl">Membership Organisations</h3>
+          <p class="mt-4 text-gray-600 text-sm">
+            Full automation of membership renewals and payments.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded shadow">
+          <h3 class="font-semibold text-xl">National Associations</h3>
+          <p class="mt-4 text-gray-600 text-sm">
+            Manage your associations efficiently with ease.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded shadow">
+          <h3 class="font-semibold text-xl">Clubs And Groups</h3>
+          <p class="mt-4 text-gray-600 text-sm">
+            Everything you need in one powerful platform.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SPLIT SECTION ================= -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <img src="image/split.jpg" class="w-full rounded" alt="Split Section">
+
+      <div>
+        <h2 class="text-3xl font-bold">
+          The unseen of spending three years at Pixelgrade
+        </h2>
+        <p class="mt-4 text-gray-600">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+        <button class="mt-6 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded">
+          Learn More
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
+      <div>
+        <h3 class="text-3xl font-bold text-green-600">2,245,341</h3>
+        <p class="text-gray-500">Members</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold text-green-600">46,328</h3>
+        <p class="text-gray-500">Clubs</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold text-green-600">828,867</h3>
+        <p class="text-gray-500">Event Bookings</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold text-green-600">1,926,436</h3>
+        <p class="text-gray-500">Payments</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BLOG ================= -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center">
+        Caring is the new marketing
+      </h2>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-8">
+        <div class="bg-white shadow rounded overflow-hidden">
+          <img src="image/blog1.jpg" alt="Blog 1">
+          <div class="p-6">
+            <h3 class="font-semibold">
+              Creating Streamlined Safeguarding Processes
+            </h3>
+            <a href="#" class="text-green-600 mt-4 inline-block hover:underline">
+              Read more →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white shadow rounded overflow-hidden">
+          <img src="image/blog2.jpg" alt="Blog 2">
+          <div class="p-6">
+            <h3 class="font-semibold">
+              Safeguarding responsibilities and management
+            </h3>
+            <a href="#" class="text-green-600 mt-4 inline-block hover:underline">
+              Read more →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white shadow rounded overflow-hidden">
+          <img src="image/blog3.jpg" alt="Blog 3">
+          <div class="p-6">
+            <h3 class="font-semibold">
+              Revamping the Membership Model
+            </h3>
+            <a href="#" class="text-green-600 mt-4 inline-block hover:underline">
+              Read more →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="bg-gray-100 py-20 text-center">
+    <h2 class="text-4xl font-bold mb-6 ">
+      Pellentesque suscipit fringilla libero eu.
+    </h2>
+    <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded text-lg">
+      Get a Demo →
+    </button>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-gray-900 text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-white text-xl font-bold mb-4">GreenIsh</h3>
+        <p>Copyright © 2026</p>
+        <p>All rights reserved</p>
+      </div>
+
+      <div>
+        <h4 class="text-white mb-4">Company</h4>
+        <ul class="space-y-2">
+          <li>About us</li>
+          <li>Blog</li>
+          <li>Contact us</li>
+          <li>Pricing</li>
+          <li>Testimonials</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white mb-4">Support</h4>
+        <ul class="space-y-2">
+          <li>Help center</li>
+          <li>Terms of service</li>
+          <li>Legal</li>
+          <li>Privacy policy</li>
+          <li>Status</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white mb-4">Stay up to date</h4>
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="w-full px-4 py-2 rounded bg-gray-800 text-white"
+        >
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

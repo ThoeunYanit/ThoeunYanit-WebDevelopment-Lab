@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Lab Exercises</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-gradient-to-br from-purple-500 to-indigo-600 min-h-screen py-8 px-4">
+    <div class="container mx-auto max-w-4xl">
+        <h1 class="text-4xl font-bold text-center text-white mb-8">JavaScript Lab Exercises</h1>
+
+        <!-- Exercise 1: Leap Year -->
+        <div class="card bg-base-100 shadow-xl mb-6">
+            <div class="card-body">
+                <h2 class="card-title text-2xl text-primary">Exercise 1: Leap Year Checker</h2>
+                <p class="text-gray-600 mb-4">Check if a year is a leap year or not.</p>
+                <div class="card-actions justify-center">
+                    <button onclick="checkLeapYear()" class="btn btn-primary btn-wide">Check Leap Year</button>
+                </div>
+                <div id="result1" class="mt-4"></div>
+            </div>
+        </div>
+
+        <!-- Exercise 2: Array to String -->
+        <div class="card bg-base-100 shadow-xl mb-6">
+            <div class="card-body">
+                <h2 class="card-title text-2xl text-secondary">Exercise 2: Join Array Elements</h2>
+                <p class="text-gray-600 mb-4">Join array elements: ["Red", "Green", "White", "Black"]</p>
+                <div class="card-actions justify-center">
+                    <button onclick="joinArray()" class="btn btn-secondary btn-wide">Join Array</button>
+                </div>
+                <div id="result2" class="mt-4"></div>
+            </div>
+        </div>
+
+        <!-- Exercise 3: Greeting -->
+        <div class="card bg-base-100 shadow-xl mb-6">
+            <div class="card-body">
+                <h2 class="card-title text-2xl text-accent">Exercise 3: Time-based Greeting</h2>
+                <p class="text-gray-600 mb-4">Display greeting based on current time.</p>
+                <div class="alert alert-info mb-4" id="timeDisplay">
+                    <span class="text-lg font-semibold">Loading time...</span>
+                </div>
+                <div id="result3" class="alert alert-success">
+                    <span class="text-lg">Loading greeting...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 4: Caesar Cipher -->
+        <div class="card bg-base-100 shadow-xl mb-6">
+            <div class="card-body">
+                <h2 class="card-title text-2xl text-error">Exercise 4: Caesar Cipher</h2>
+                
+                <!-- Encrypt Section -->
+                <div class="mt-6">
+                    <h3 class="text-xl font-bold text-error mb-4">Encrypt</h3>
+                    
+                    <div class="form-control mb-3">
+                        <label class="label">
+                            <span class="label-text font-semibold">Plain Text:</span>
+                        </label>
+                        <input type="text" id="plainText" placeholder="Enter your message..." class="input input-bordered w-full">
+                    </div>
+                    
+                    <div class="form-control mb-4">
+                        <label class="label">
+                            <span class="label-text font-semibold">Shift:</span>
+                        </label>
+                        <input type="number" id="encryptShift" value="3" min="1" max="25" class="input input-bordered w-full">
+                    </div>
+                    
+                    <div class="card-actions justify-center mb-4">
+                        <button onclick="encryptMessage()" class="btn btn-error btn-wide">Encrypt</button>
+                    </div>
+                    
+                    <div id="cipherResult" class="alert alert-error hidden">
+                        <span></span>
+                    </div>
+                </div>
+
+                <!-- Decrypt Section -->
+                <div class="divider"></div>
+                
+                <div class="mt-6">
+                    <h3 class="text-xl font-bold text-info mb-4">Decrypt</h3>
+                    
+                    <div class="form-control mb-3">
+                        <label class="label">
+                            <span class="label-text font-semibold">Cipher Text:</span>
+                        </label>
+                        <input type="text" id="cipherText" placeholder="Enter encrypted message..." class="input input-bordered w-full">
+                    </div>
+                    
+                    <div class="form-control mb-4">
+                        <label class="label">
+                            <span class="label-text font-semibold">Shift:</span>
+                        </label>
+                        <input type="number" id="decryptShift" value="3" min="1" max="25" class="input input-bordered w-full">
+                    </div>
+                    
+                    <div class="card-actions justify-center mb-4">
+                        <button onclick="decryptMessage()" class="btn btn-info btn-wide">Decrypt</button>
+                    </div>
+                    
+                    <div id="plainResult" class="alert alert-info hidden">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== EXERCISE 1: LEAP YEAR ==========
+        function checkLeapYear() {
+            let year = prompt("Please enter a year:", "2024");
+            
+            if (year == null || year == "") {
+                document.getElementById("result1").innerHTML = '<div class="alert alert-info"><span>You cancelled.</span></div>';
+                return;
+            }
+            
+            year = parseInt(year);
+            
+            if (isNaN(year)) {
+                document.getElementById("result1").innerHTML = '<div class="alert alert-error"><span>Please enter a valid year!</span></div>';
+                return;
+            }
+            
+            // Check if leap year
+            let isLeap = false;
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                isLeap = true;
+            }
+            
+            if (isLeap) {
+                document.getElementById("result1").innerHTML = 
+                    '<div class="alert alert-success"><span><strong>' + year + '</strong> is a Leap Year!</span></div>';
+            } else {
+                document.getElementById("result1").innerHTML = 
+                    '<div class="alert alert-error"><span><strong>' + year + '</strong> is NOT a Leap Year.</span></div>';
+            }
+        }
+
+        // ========== EXERCISE 2: ARRAY TO STRING ==========
+        function joinArray() {
+            let myColor = ["Red", "Green", "White", "Black"];
+            let result = "";
+            
+            // Join using for loop
+            for (let i = 0; i < myColor.length; i++) {
+                result += myColor[i];
+                if (i < myColor.length - 1) {
+                    result += ",";
+                }
+            }
+            
+            document.getElementById("result2").innerHTML = 
+                '<div class="alert alert-success">' +
+                '<div><strong>Array:</strong> ["Red", "Green", "White", "Black"]<br>' +
+                '<strong>Result:</strong> "' + result + '"</div></div>';
+        }
+
+        // ========== EXERCISE 3: GREETING ==========
+        function updateGreeting() {
+            const d = new Date();
+            let hour = d.getHours();
+            let minutes = d.getMinutes();
+            let seconds = d.getSeconds();
+            
+            // Format time
+            let ampm = hour >= 12 ? 'PM' : 'AM';
+            let displayHour = hour % 12;
+            displayHour = displayHour ? displayHour : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            let timeString = displayHour + ':' + minutes + ':' + seconds + ' ' + ampm;
+            document.getElementById("timeDisplay").innerHTML = '<span class="text-lg font-semibold">Current Time: ' + timeString + '</span>';
+            
+            // Determine greeting
+            let greeting = "";
+            if (hour >= 5 && hour < 12) {
+                greeting = "Good Morning!";
+            } else if (hour >= 12 && hour < 18) {
+                greeting = "Good Afternoon!";
+            } else {
+                greeting = "Good Evening!";
+            }
+            
+            document.getElementById("result3").innerHTML = '<span class="text-lg">' + greeting + '</span>';
+        }
+
+        // ========== EXERCISE 4: CAESAR CIPHER ==========
+        function encryptMessage() {
+            let text = document.getElementById("plainText").value;
+            let shift = parseInt(document.getElementById("encryptShift").value);
+            
+            if (!text) {
+                alert("Please enter some text to encrypt!");
+                return;
+            }
+            
+            if (isNaN(shift) || shift < 1 || shift > 25) {
+                alert("Please enter a valid shift value (1-25)");
+                return;
+            }
+            
+            let encrypted = "";
+            
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                let charCode = char.charCodeAt(0);
+                
+                // Uppercase letters (A-Z: 65-90)
+                if (charCode >= 65 && charCode <= 90) {
+                    let newCharCode = ((charCode - 65 + shift) % 26) + 65;
+                    encrypted += String.fromCharCode(newCharCode);
+                }
+                // Lowercase letters (a-z: 97-122)
+                else if (charCode >= 97 && charCode <= 122) {
+                    let newCharCode = ((charCode - 97 + shift) % 26) + 97;
+                    encrypted += String.fromCharCode(newCharCode);
+                }
+                // Keep other characters unchanged
+                else {
+                    encrypted += char;
+                }
+            }
+            
+            let resultDiv = document.getElementById("cipherResult");
+            resultDiv.classList.remove("hidden");
+            resultDiv.innerHTML = "<span><strong>Cipher Text:</strong> " + encrypted + "</span>";
+        }
+
+        function decryptMessage() {
+            let text = document.getElementById("cipherText").value;
+            let shift = parseInt(document.getElementById("decryptShift").value);
+            
+            if (!text) {
+                alert("Please enter some text to decrypt!");
+                return;
+            }
+            
+            if (isNaN(shift) || shift < 1 || shift > 25) {
+                alert("Please enter a valid shift value (1-25)");
+                return;
+            }
+            
+            let decrypted = "";
+            
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                let charCode = char.charCodeAt(0);
+                
+                // Uppercase letters (A-Z: 65-90)
+                if (charCode >= 65 && charCode <= 90) {
+                    let newCharCode = ((charCode - 65 - shift + 26) % 26) + 65;
+                    decrypted += String.fromCharCode(newCharCode);
+                }
+                // Lowercase letters (a-z: 97-122)
+                else if (charCode >= 97 && charCode <= 122) {
+                    let newCharCode = ((charCode - 97 - shift + 26) % 26) + 97;
+                    decrypted += String.fromCharCode(newCharCode);
+                }
+                // Keep other characters unchanged
+                else {
+                    decrypted += char;
+                }
+            }
+            
+            let resultDiv = document.getElementById("plainResult");
+            resultDiv.classList.remove("hidden");
+            resultDiv.innerHTML = "<span><strong>Plain Text:</strong> " + decrypted + "</span>";
+        }
+
+        // Start Exercise 3 automatically
+        window.onload = function() {
+            updateGreeting();
+            setInterval(updateGreeting, 1000); // Update every second
+        };
+    </script>
+</body>
+</html>

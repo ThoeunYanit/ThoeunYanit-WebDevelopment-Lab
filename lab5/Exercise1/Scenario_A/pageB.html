@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page B</title>
+</head>
+<body>
+  <h1>There is nothing to display</h1>
+
+  <script>
+    
+    if (window.opener) {
+     
+      window.opener.document.getElementById("link").style.display = "none";
+      window.opener.document.getElementById("title").textContent = "This is a fake login page";
+    }
+  </script>
+</body>
+</html>

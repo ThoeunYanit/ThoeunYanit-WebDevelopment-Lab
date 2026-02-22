@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Selector</title>
+
+  <!-- Tailwind + DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-base-200">
+
+<div class="card w-[500px] bg-base-100 shadow-xl p-8 space-y-6">
+
+  <h2 class="text-2xl font-bold text-primary">Location Selector</h2>
+
+  <!-- Province -->
+  <div>
+    <label class="label font-semibold">Province</label>
+    <select id="provinceSelect" class="select select-bordered w-full">
+      <option value="">Select Province</option>
+    </select>
+  </div>
+
+  <!-- District -->
+  <div>
+    <label class="label font-semibold">District</label>
+    <select id="districtSelect" class="select select-bordered w-full" disabled>
+      <option value="">Select District</option>
+    </select>
+  </div>
+
+  <!-- Commune -->
+  <div>
+    <label class="label font-semibold">Commune</label>
+    <select id="communeSelect" class="select select-bordered w-full" disabled>
+      <option value="">Select Commune</option>
+    </select>
+  </div>
+
+  <!-- Village -->
+  <div>
+    <label class="label font-semibold">Village</label>
+    <select id="villageSelect" class="select select-bordered w-full" disabled>
+      <option value="">Select Village</option>
+    </select>
+  </div>
+
+  <!-- Buttons -->
+  <div class="flex justify-end gap-4 pt-4">
+    <button class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+    <button class="btn" onclick="handleReset()">Reset</button>
+  </div>
+
+  <pre id="resultBox" class="bg-base-200 p-4 rounded hidden"></pre>
+
+</div>
+
+<script>
+
+const API_BASE = "https://corsproxy.io/?https://cambo-gazetteer.manethpak.dev/api/v1";
+
+/* =======================
+   FETCH FUNCTIONS
+======================= */
+
+function fetchProvinces() {
+  fetch(API_BASE + "/provinces")
+    .then(res => res.json())
+    .then(result => {
+      const select = document.getElementById("provinceSelect");
+      result.data.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.code;
+        option.textContent = `${item.name_en} (${item.name_km})`;
+        select.appendChild(option);
+      });
+    });
+}
+
+function fetchDistricts(provinceCode) {
+  const select = document.getElementById("districtSelect");
+  select.disabled = true;
+  select.innerHTML = `<option>Loading...</option>`;
+
+  fetch(API_BASE + `/districts?province=${provinceCode}`)
+    .then(res => res.json())
+    .then(result => {
+      select.innerHTML = `<option value="">Select District</option>`;
+      result.data.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.code;
+        option.textContent = `${item.name_en} (${item.name_km})`;
+        select.appendChild(option);
+      });
+      select.disabled = false;
+    });
+}
+
+function fetchCommunes(districtCode) {
+  const select = document.getElementById("communeSelect");
+  select.disabled = true;
+  select.innerHTML = `<option>Loading...</option>`;
+
+  fetch(API_BASE + `/communes?district=${districtCode}`)
+    .then(res => res.json())
+    .then(result => {
+      select.innerHTML = `<option value="">Select Commune</option>`;
+      result.data.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.code;
+        option.textContent = `${item.name_en} (${item.name_km})`;
+        select.appendChild(option);
+      });
+      select.disabled = false;
+    });
+}
+
+function fetchVillages(communeCode) {
+  const select = document.getElementById("villageSelect");
+  select.disabled = true;
+  select.innerHTML = `<option>Loading...</option>`;
+
+  fetch(API_BASE + `/villages?commune=${communeCode}`)
+    .then(res => res.json())
+    .then(result => {
+      select.innerHTML = `<option value="">Select Village</option>`;
+      result.data.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.code;
+        option.textContent = `${item.name_en} (${item.name_km})`;
+        select.appendChild(option);
+      });
+      select.disabled = false;
+    });
+}
+
+/* =======================
+   RESET FUNCTIONS
+======================= */
+
+function resetDistrict() {
+  const select = document.getElementById("districtSelect");
+  select.innerHTML = `<option value="">Select District</option>`;
+  select.disabled = true;
+  resetCommune();
+}
+
+function resetCommune() {
+  const select = document.getElementById("communeSelect");
+  select.innerHTML = `<option value="">Select Commune</option>`;
+  select.disabled = true;
+  resetVillage();
+}
+
+function resetVillage() {
+  const select = document.getElementById("villageSelect");
+  select.innerHTML = `<option value="">Select Village</option>`;
+  select.disabled = true;
+}
+
+/* =======================
+   EVENTS
+======================= */
+
+document.getElementById("provinceSelect")
+  .addEventListener("change", function () {
+    resetDistrict();
+    if (this.value) fetchDistricts(this.value);
+});
+
+document.getElementById("districtSelect")
+  .addEventListener("change", function () {
+    resetCommune();
+    if (this.value) fetchCommunes(this.value);
+});
+
+document.getElementById("communeSelect")
+  .addEventListener("change", function () {
+    resetVillage();
+    if (this.value) fetchVillages(this.value);
+});
+
+/* =======================
+   BUTTON ACTIONS
+======================= */
+function handleSubmit() {
+
+  const province = document.getElementById("provinceSelect").value;
+  const district = document.getElementById("districtSelect").value;
+  const commune  = document.getElementById("communeSelect").value;
+  const village  = document.getElementById("villageSelect").value;
+
+  if (!province || !district || !commune || !village) {
+    alert("Please select all fields.");
+    return;
+  }
+
+  const data = {
+    province: province,
+    district: district,
+    commune: commune,
+    village: village,
+    id: 101
+  };
+
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(result => {
+    const box = document.getElementById("resultBox");
+    box.textContent = JSON.stringify(result, null, 2);
+    box.classList.remove("hidden");
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+}
+
+function handleReset() {
+  document.getElementById("provinceSelect").value = "";
+  resetDistrict();
+}
+
+/* =======================
+   INIT
+======================= */
+
+window.onload = fetchProvinces;
+
+</script>
+</body>
+</html>

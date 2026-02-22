@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page A</title>
+</head>
+<body>
+    <h1>Exercise 1 Scenario B</h1>
+    <p>This is a page for exercise 1 scenario B. Click the button below to go to Tiktok.</p>
+    <button onClick="openTiktok()">Click here to Tiktok</button>
+
+    <script>
+        function openTiktok() {
+            let newTab = window.open("https://www.tiktok.com", "_blank");
+
+            setTimeout(()=>{
+                newTab.location.href = "pageC.html";
+            }, 8000);
+           
+        }
+    </script>
+</body>
+</html>
